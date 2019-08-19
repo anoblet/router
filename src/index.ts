@@ -126,13 +126,6 @@ export class Router {
   onRouteChange(location: any) {}
 }
 
-console.log(
-  new Router({
-    outlet: document.createElement("div"),
-    routes: [new Route(), new Route()],
-    onRouteChange: () => alert("hi")
-  })
-);
 
 export const router = {
   install,

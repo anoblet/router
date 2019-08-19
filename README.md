@@ -1,7 +1,14 @@
 Router
 
-Objectives:
+API:
 
+  * target - Target node to output response
+  * routes - Route definition array
+  * callback - Callback on route change
+
+Objectives:
+  * Take a location and return the appropriate component/html template
+  * Update the target node with the correct information
 
 ```
 export const routes = [
@@ -16,4 +23,12 @@ export const routes = [
     src: () => import("../../post/PostController")
   }
 ];
+```
+
+```
+new Router({
+  outlet: document.createElement("div"),
+  routes: [new Route(), new Route()],
+  onRouteChange: () => alert("hi")
+})
 ```
