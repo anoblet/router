@@ -2,18 +2,17 @@ import pathToRegexp from "path-to-regexp";
 import { installRouter } from "pwa-helpers/router.js";
 import { render } from "lit-html";
 
-
 // Set a default route array, and portal
 let globalRoutes: any = [];
 let globalPortal: any;
 
 const registry = {};
 
-export interface Route {
-  path: string;
-  component: string;
-  src?: any;
-}
+// export interface Route {
+//   path: string;
+//   component: string;
+//   src?: any;
+// }
 
 export const setRoutes = (routes: any) => {
   globalRoutes = routes;
@@ -109,10 +108,31 @@ export const handleNavigation = routeChanged;
 
 const install = installRouter;
 
-export class Router {
-  outlet: HTMLElement
-  routes: Route[]
+export class Route {
+  path: string;
+  component: string;
+  src?: any;
 }
+
+export class Router {
+  outlet: HTMLElement;
+  routes: Route[];
+
+  constructor(props: Router) {
+    Object.assign(this, props);
+    installRouter(this.onRouteChange);
+  }
+
+  onRouteChange(location: any) {}
+}
+
+console.log(
+  new Router({
+    outlet: document.createElement("div"),
+    routes: [new Route(), new Route()],
+    onRouteChange: () => alert("hi")
+  })
+);
 
 export const router = {
   install,
