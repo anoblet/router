@@ -82,7 +82,7 @@ export const routeChanged = async ({ location, portal, routes }: any) => {
   }
   if (matchedRoute.template) {
     const container = document.createElement("div");
-    render(matchedRoute.template, container);
+    render(await matchedRoute.template, container);
     portal.appendChild(container);
   } else {
     const element =
@@ -126,6 +126,7 @@ export class Router {
   onRouteChange(location: any) {}
 }
 
+const register = (outlet: HTMLElement, routes) => {};
 
 export const router = {
   install,
