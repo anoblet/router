@@ -130,6 +130,7 @@ const register = (outlet: HTMLElement, routes) => {};
 
 export const router = {
   install,
+  register,
   routeChanged,
   setPortal,
   setRoutes
