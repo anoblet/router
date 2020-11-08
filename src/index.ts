@@ -123,7 +123,7 @@ export class Router {
   }
 
   install() {
-    installRouter(this.onRouteChange);
+    installRouter(this.onRouteChange.bind(this));
   }
 
   navigate(path: string) {
@@ -132,7 +132,11 @@ export class Router {
   }
 
   onRouteChange(location: any) {
-    routeChanged({ location, portal: this.outlet, routes: this.routes });
+    routeChanged({
+      location: { pathname: location },
+      portal: this.outlet,
+      routes: this.routes,
+    });
   }
 }
 
