@@ -120,10 +120,20 @@ export class Router {
 
   constructor(props: Router) {
     Object.assign(this, props);
+  }
+
+  install() {
     installRouter(this.onRouteChange);
   }
 
-  onRouteChange(location: any) {}
+  navigate(path: string) {
+    window.history.pushState({}, "", path);
+    this.onRouteChange(path);
+  }
+
+  onRouteChange(location: any) {
+    routeChanged({ location, portal: this.outlet, routes: this.routes });
+  }
 }
 
 const register = (outlet: HTMLElement, routes) => {};
@@ -133,7 +143,7 @@ export const router = {
   register,
   routeChanged,
   setPortal,
-  setRoutes
+  setRoutes,
 };
 
 export default router;

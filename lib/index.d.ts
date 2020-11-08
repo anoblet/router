@@ -19,6 +19,8 @@ export declare class Router {
     outlet: HTMLElement;
     routes: Route[];
     constructor(props: Router);
+    install(): void;
+    navigate(path: string): void;
     onRouteChange(location: any): void;
 }
 export declare const router: {

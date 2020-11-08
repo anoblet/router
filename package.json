@@ -2,12 +2,11 @@
   "name": "@anoblet/router",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "save": "git add . && git commit -m \"Chore: Save\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "rollup --config -w"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +16,7 @@
     "pwa-helpers": "^0.9.1"
   },
   "devDependencies": {
-    "rollup": "^1.19.4",
-    "rollup-plugin-typescript": "^1.0.1",
-    "rollup-plugin-typescript2": "^0.22.1",
-    "tslib": "^1.10.0",
     "typescript": "^3.9.7"
   },
-  "types": "dist/index.d.ts"
+  "types": "lib/index.d.ts"
 }
