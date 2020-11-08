@@ -108,7 +108,7 @@ export const handleNavigation = routeChanged;
 
 const install = installRouter;
 
-export class Route {
+export interface Route {
   path: string;
   component: string;
   src?: any;
@@ -118,7 +118,7 @@ export class Router {
   outlet: HTMLElement;
   routes: Route[];
 
-  constructor(props: Router) {
+  constructor(props: { outlet: HTMLElement; routes: Route[] }) {
     Object.assign(this, props);
   }
 
