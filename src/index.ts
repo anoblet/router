@@ -128,15 +128,11 @@ export class Router {
 
   navigate(path: string) {
     window.history.pushState({}, "", path);
-    this.onRouteChange(path);
+    this.onRouteChange({ pathname: path });
   }
 
   onRouteChange(location: any) {
-    routeChanged({
-      location: { pathname: location },
-      portal: this.outlet,
-      routes: this.routes,
-    });
+    routeChanged({ location, portal: this.outlet, routes: this.routes });
   }
 }
 
