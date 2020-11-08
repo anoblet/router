@@ -118,7 +118,7 @@ export class Router {
   outlet: HTMLElement;
   routes: Route[];
 
-  constructor(props: { outlet: HTMLElement; routes: Route[] }) {
+  constructor(props: { outlet?: HTMLElement; routes?: Route[] }) {
     Object.assign(this, props);
   }
 

@@ -19,8 +19,8 @@ export declare class Router {
     outlet: HTMLElement;
     routes: Route[];
     constructor(props: {
-        outlet: HTMLElement;
-        routes: Route[];
+        outlet?: HTMLElement;
+        routes?: Route[];
     });
     install(): void;
     navigate(path: string): void;
