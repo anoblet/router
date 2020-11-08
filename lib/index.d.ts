@@ -10,7 +10,7 @@ export declare const navigate: (path: string) => void;
  */
 export declare const routeChanged: ({ location, portal, routes }: any) => Promise<void>;
 export declare const handleNavigation: ({ location, portal, routes }: any) => Promise<void>;
-export declare class Route {
+export interface Route {
     path: string;
     component: string;
     src?: any;
@@ -18,7 +18,10 @@ export declare class Route {
 export declare class Router {
     outlet: HTMLElement;
     routes: Route[];
-    constructor(props: Router);
+    constructor(props: {
+        outlet: HTMLElement;
+        routes: Route[];
+    });
     install(): void;
     navigate(path: string): void;
     onRouteChange(location: any): void;
