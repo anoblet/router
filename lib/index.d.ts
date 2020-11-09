@@ -10,6 +10,14 @@ export declare const navigate: (path: string) => void;
  */
 export declare const routeChanged: ({ location, portal, routes }: any) => Promise<void>;
 export declare const handleNavigation: ({ location, portal, routes }: any) => Promise<void>;
+export declare const router: {
+    install: (locationUpdatedCallback: (location: Location, event: Event) => void) => void;
+    register: (outlet: HTMLElement, routes: any) => void;
+    routeChanged: ({ location, portal, routes }: any) => Promise<void>;
+    setPortal: (portal: any) => void;
+    setRoutes: (routes: any) => void;
+};
+export default router;
 export interface Route {
     path: string;
     component: string;
@@ -25,12 +33,5 @@ export declare class Router {
     install(): void;
     navigate(path: string): void;
     onRouteChange(location: any): void;
+    setOutlet(outlet: HTMLElement): void;
 }
-export declare const router: {
-    install: (locationUpdatedCallback: (location: Location, event: Event) => void) => void;
-    register: (outlet: HTMLElement, routes: any) => void;
-    routeChanged: ({ location, portal, routes }: any) => Promise<void>;
-    setPortal: (portal: any) => void;
-    setRoutes: (routes: any) => void;
-};
-export default router;

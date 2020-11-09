@@ -8,12 +8,6 @@ let globalPortal: any;
 
 const registry = {};
 
-// export interface Route {
-//   path: string;
-//   component: string;
-//   src?: any;
-// }
-
 export const setRoutes = (routes: any) => {
   globalRoutes = routes;
 };
@@ -76,10 +70,12 @@ export const routeChanged = async ({ location, portal, routes }: any) => {
   // Check if the portal exists
   if (!portal) throw new Error("Could not find portal");
   // End check if the portal exists
+
   // Remove children
   while (portal.firstChild) {
     portal.removeChild(portal.firstChild);
   }
+
   if (matchedRoute.template) {
     const container = document.createElement("div");
     render(await matchedRoute.template, container);
@@ -89,11 +85,13 @@ export const routeChanged = async ({ location, portal, routes }: any) => {
       registry[location.pathname] ||
       document.createElement(matchedRoute.component);
     registry[location.pathname] = element;
+
     // Map properties
     matchedRoute.keys.map((key: any) => {
       element[key.name] = matchedRoute.data[key.name];
     });
     // End map properties
+
     const loading = document.createElement("loading-component");
     portal.appendChild(loading);
     if (!registry[matchedRoute.component])
@@ -107,6 +105,18 @@ export const routeChanged = async ({ location, portal, routes }: any) => {
 export const handleNavigation = routeChanged;
 
 const install = installRouter;
+
+const register = (outlet: HTMLElement, routes) => {};
+
+export const router = {
+  install,
+  register,
+  routeChanged,
+  setPortal,
+  setRoutes,
+};
+
+export default router;
 
 export interface Route {
   path: string;
@@ -134,16 +144,8 @@ export class Router {
   onRouteChange(location: any) {
     routeChanged({ location, portal: this.outlet, routes: this.routes });
   }
+
+  setOutlet(outlet: HTMLElement) {
+    this.outlet = outlet;
+  }
 }
-
-const register = (outlet: HTMLElement, routes) => {};
-
-export const router = {
-  install,
-  register,
-  routeChanged,
-  setPortal,
-  setRoutes,
-};
-
-export default router;
