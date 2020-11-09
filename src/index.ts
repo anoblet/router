@@ -1,6 +1,6 @@
+import { render, TemplateResult } from "lit-html";
 import pathToRegexp from "path-to-regexp";
 import { installRouter } from "pwa-helpers/router.js";
-import { render } from "lit-html";
 
 // Set a default route array, and portal
 let globalRoutes: any = [];
@@ -122,6 +122,7 @@ export interface Route {
   path: string;
   component: string;
   src?: any;
+  template?: TemplateResult;
 }
 
 export class Router {

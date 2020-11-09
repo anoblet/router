@@ -1,3 +1,4 @@
+import { TemplateResult } from "lit-html";
 export declare const setRoutes: (routes: any) => void;
 export declare const setPortal: (portal: any) => void;
 export declare const navigate: (path: string) => void;
@@ -22,6 +23,7 @@ export interface Route {
     path: string;
     component: string;
     src?: any;
+    template?: TemplateResult;
 }
 export declare class Router {
     outlet: HTMLElement;
