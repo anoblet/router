@@ -19,20 +19,30 @@ export declare const router: {
     setRoutes: (routes: any) => void;
 };
 export default router;
+/**
+ * @deprecated
+ */
 export interface Route {
     path: string;
     component: string;
     src?: any;
     template?: TemplateResult;
 }
+export interface RouteInterface {
+    path: string;
+    component: string;
+    src?: any;
+    template?: TemplateResult;
+}
+export interface RouterInterface {
+    outlet?: HTMLElement;
+    routes?: Route[];
+}
 export declare class Router {
     outlet: HTMLElement;
     routes: Route[];
-    constructor(props: {
-        outlet?: HTMLElement;
-        routes?: Route[];
-    });
-    install(): void;
+    constructor(properties?: RouterInterface);
+    install(properties?: RouterInterface): void;
     navigate(path: string): void;
     onRouteChange(location: any): void;
     setOutlet(outlet: HTMLElement): void;

@@ -118,6 +118,9 @@ export const router = {
 
 export default router;
 
+/**
+ * @deprecated
+ */
 export interface Route {
   path: string;
   component: string;
@@ -125,15 +128,28 @@ export interface Route {
   template?: TemplateResult;
 }
 
+export interface RouteInterface {
+  path: string;
+  component: string;
+  src?: any;
+  template?: TemplateResult;
+}
+
+export interface RouterInterface {
+  outlet?: HTMLElement;
+  routes?: Route[];
+}
+
 export class Router {
   outlet: HTMLElement;
   routes: Route[];
 
-  constructor(props: { outlet?: HTMLElement; routes?: Route[] }) {
-    Object.assign(this, props);
+  constructor(properties?: RouterInterface) {
+    Object.assign(this, properties);
   }
 
-  install() {
+  install(properties?: RouterInterface) {
+    Object.assign(this, properties);
     installRouter(this.onRouteChange.bind(this));
   }
 
